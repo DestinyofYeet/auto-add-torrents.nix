@@ -50,12 +50,21 @@ in {
       description = "Automatically add torrents";
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${cfg.package}/bin/auto-add-torrents -l ${cfg.logDir} -c ${configFile}";
+        ExecStart = "${cfg.package}/bin/auto-add-torrents -l ${cfg.logDir} -c ${cfg.configFile}";
         Restart = "on-failure";
         User = cfg.user;
         Group = cfg.group;
         LogsDirectory = "auto-add-torrents";
       };
+    };
+
+    users = mkIf (cfg.user == "auto-add-torrents"){
+      users.auto-add-torrents = {
+        isSystemUser = true;
+        group = "auto-add-torrents";
+      };
+
+      groups.auto-add-torrents = {};
     };
   };
 }

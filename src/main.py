@@ -179,7 +179,7 @@ def set_config(config_path: str):
     with open(config_path, "rb") as f:
         config = tomllib.load(f)
 
-    print(config)
+    # print(config)
 
     DELUGE_DATA = config.get("DELUGE")
     EMAIL_DATA = config.get("EMAIL")
