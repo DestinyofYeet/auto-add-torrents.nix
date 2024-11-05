@@ -31,6 +31,12 @@ in {
         description = "The package to use";
       };
 
+      developerMode = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Enables developer mode: More output and the last torrent in the rss feed will be added";
+      };
+
       user = mkOption {
         type = types.str;
         default = "auto-add-torrents";
@@ -50,7 +56,7 @@ in {
       description = "Automatically add torrents";
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${cfg.package}/bin/auto-add-torrents -l ${cfg.logDir} -c ${cfg.configFile}";
+        ExecStart = "${cfg.package}/bin/auto-add-torrents -l ${cfg.logDir} -c ${cfg.configFile} ${if cfg.developerMode then "--dev" else ""}";
         Restart = "on-failure";
         User = cfg.user;
         Group = cfg.group;

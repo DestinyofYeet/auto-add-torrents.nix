@@ -233,9 +233,10 @@ async def _main():
         for entry in parsed.get("entries"):
             if entry.get("title_detail") not in old_state:
                 logger.info(f"Found new entry: {entry.get('title')}")
-                torrent_url = entry.get("link").replace("http://localhost:9696", "https://prowlarr.local.ole.blue")
+                torrent_url = entry.get("link")
 
-                print(torrent_url)
+                # print(torrent_url)
+                logger.debug(f"Url: {torrent_url}")
                 added_successful = await add_torrent_to_deluge(torrent_url)
                 if added_successful:
                     await send_email(f"Added new torrent:"
