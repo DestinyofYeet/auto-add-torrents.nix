@@ -22,6 +22,7 @@ in {
       logDir = mkOption {
         type = types.path;
         description = "The directory in which a logs folder will be created";
+        default = "/var/log/auto-add-torrents/";
       };
 
       package = mkOption {
@@ -53,6 +54,7 @@ in {
         Restart = "on-failure";
         User = cfg.user;
         Group = cfg.group;
+        LogsDirectory = "auto-add-torrents";
       };
     };
   };
