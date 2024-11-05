@@ -1,0 +1,17 @@
+[GENERAL]
+rss_url = ""
+uptime_url = ""
+
+[EMAIL]
+host = ""
+smtp = ""
+port =""
+user = ""
+password = ""
+
+[DELUGE]
+host = ""
+port = ""
+username = ""
+password = ""
+label = "auto-add"

@@ -1,0 +1,13 @@
+[Unit]
+Description=Auto Download Torrents
+After=default.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 main.py
+WorkingDirectory=/home/ole/github/auto-add-torrents
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
